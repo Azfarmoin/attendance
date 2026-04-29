@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply text-white font-sans antialiased;
+    background-color: #0f1117;
+    background-image: radial-gradient(ellipse at 20% 0%, rgba(99,102,241,0.08) 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 100%, rgba(79,70,229,0.05) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #1a1d27; }
+  ::-webkit-scrollbar-thumb { background: #242736; border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+}
+
+@layer components {
+  .card {
+    background-color: #1a1d27;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 1rem;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2.5 rounded-xl
+           transition-all duration-200 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed
+           active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply text-white/80 hover:text-white font-medium px-4 py-2.5 rounded-xl
+           border transition-all duration-200 flex items-center gap-2 active:scale-[0.98];
+    background-color: #242736;
+    border-color: rgba(255,255,255,0.08);
+  }
+  .btn-secondary:hover { background-color: rgba(255,255,255,0.1); }
+
+  .btn-danger {
+    @apply text-red-400 hover:text-red-300 font-medium px-4 py-2.5 rounded-xl
+           border transition-all duration-200 flex items-center gap-2 active:scale-[0.98];
+    background-color: rgba(239,68,68,0.1);
+    border-color: rgba(239,68,68,0.2);
+  }
+  .btn-danger:hover { background-color: rgba(239,68,68,0.2); }
+
+  .input {
+    @apply w-full rounded-xl px-4 py-3 text-white text-sm
+           placeholder-white/30 focus:outline-none transition-all duration-200;
+    background-color: #242736;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .input:focus {
+    border-color: rgba(99,102,241,0.5);
+    background-color: #1a1d27;
+  }
+
+  .label {
+    @apply block text-xs font-medium uppercase tracking-wider mb-2;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .badge-present {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium;
+    background-color: rgba(16,185,129,0.1);
+    color: #34d399;
+    border: 1px solid rgba(16,185,129,0.2);
+  }
+
+  .badge-absent {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium;
+    background-color: rgba(239,68,68,0.1);
+    color: #f87171;
+    border: 1px solid rgba(239,68,68,0.2);
+  }
+
+  .badge-late {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium;
+    background-color: rgba(245,158,11,0.1);
+    color: #fbbf24;
+    border: 1px solid rgba(245,158,11,0.2);
+  }
+
+  .stat-card {
+    @apply card p-6 transition-all duration-200;
+  }
+  .stat-card:hover { border-color: rgba(255,255,255,0.1); }
+
+  .table-row {
+    @apply transition-colors duration-150;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .table-row:hover { background-color: rgba(255,255,255,0.02); }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm
+           hover:text-white transition-all duration-200;
+    color: rgba(255,255,255,0.5);
+  }
+  .sidebar-link:hover { background-color: rgba(255,255,255,0.05); }
+  .sidebar-link.active {
+    background-color: rgba(99,102,241,0.2);
+    color: #a5b4fc;
+    border: 1px solid rgba(99,102,241,0.2);
+  }
+}
+
+@layer utilities {
+  .animate-fade-in { animation: fadeIn 0.3s ease-out; }
+  .animate-slide-up { animation: slideUp 0.4s ease-out; }
+  .animate-slide-in { animation: slideIn 0.3s ease-out; }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
